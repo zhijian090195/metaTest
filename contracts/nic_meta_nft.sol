@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract NicMeta is ERC721Enumerable, Ownable {
+contract MetaTest is ERC721Enumerable, Ownable {
     using Strings for uint256;
 
     bool public _isSaleActive = false;
@@ -25,13 +25,13 @@ contract NicMeta is ERC721Enumerable, Ownable {
     mapping(uint256 => string) private _tokenURIs;
 
     constructor(string memory initBaseURI, string memory initNotRevealedUri)
-        ERC721("Nic Meta", "NM")
+        ERC721("MetaTest", "MT")
     {
         setBaseURI(initBaseURI);
         setNotRevealedURI(initNotRevealedUri);
     }
 
-    function mintNicMeta(uint256 tokenQuantity) public payable {
+    function mintmetaTest(uint256 tokenQuantity) public payable {
         require(
             totalSupply() + tokenQuantity <= MAX_SUPPLY,
             "Sale would exceed max supply"
@@ -47,10 +47,10 @@ contract NicMeta is ERC721Enumerable, Ownable {
         );
         require(tokenQuantity <= maxMint, "Can only mint 1 tokens at a time");
 
-        _mintNicMeta(tokenQuantity);
+        _mintmetaTest(tokenQuantity);
     }
 
-    function _mintNicMeta(uint256 tokenQuantity) internal {
+    function _mintmetaTest(uint256 tokenQuantity) internal {
         for (uint256 i = 0; i < tokenQuantity; i++) {
             uint256 mintIndex = totalSupply();
             if (totalSupply() < MAX_SUPPLY) {
